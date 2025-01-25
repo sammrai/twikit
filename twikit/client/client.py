@@ -119,6 +119,10 @@ class Client:
         self.gql = GQLClient(self)
         self.v11 = V11Client(self)
 
+    async def check_proxy(self):
+        r = await self.http.get("https://ipinfo.io")
+        print(r.text.json())
+    
     async def request(
         self,
         method: str,
